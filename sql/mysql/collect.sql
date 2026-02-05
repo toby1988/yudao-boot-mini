@@ -120,4 +120,104 @@ INSERT INTO `collect_task` (`name`, `code`, `type`, `source_config`, `cron_expre
 ('系统内存使用情况采集', 'SYSTEM_MEMORY_METRICS', 4, '{\"metricsType\":\"memory\",\"interval\":60}', '0 */5 * * * ?', 1, '每5分钟采集一次系统内存使用情况'),
 ('示例HTTP接口采集', 'EXAMPLE_HTTP_COLLECT', 1, '{\"url\":\"https://api.example.com/data\",\"method\":\"GET\",\"headers\":{\"Content-Type\":\"application/json\"}}', '0 0 */1 * * ?', 0, '示例HTTP接口数据采集任务');
 
+-- ----------------------------
+-- 菜单权限数据插入
+-- ----------------------------
+
+-- 插入数据采集顶级菜单
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2400, '数据采集', '', 1, 30, 0, '/collect', 'ep:data-analysis', NULL, NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集任务菜单
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2401, '采集任务', 'collect:task:query', 2, 1, 2400, 'task', 'ep:collection', 'collect/task/index', 'CollectTask', 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集任务按钮权限
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2402, '采集任务查询', 'collect:task:query', 3, 1, 2401, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2403, '采集任务创建', 'collect:task:create', 3, 2, 2401, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2404, '采集任务更新', 'collect:task:update', 3, 3, 2401, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2405, '采集任务删除', 'collect:task:delete', 3, 4, 2401, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2406, '采集任务执行', 'collect:task:execute', 3, 5, 2401, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2407, '采集任务导出', 'collect:task:export', 3, 6, 2401, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集数据菜单
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2410, '采集数据', 'collect:data:query', 2, 2, 2400, 'data', 'ep:data-line', 'collect/data/index', 'CollectData', 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集数据按钮权限
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2411, '采集数据查询', 'collect:data:query', 3, 1, 2410, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2412, '采集数据删除', 'collect:data:delete', 3, 4, 2410, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2413, '采集数据导出', 'collect:data:export', 3, 5, 2410, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集配置菜单
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2420, '采集配置', 'collect:config:query', 2, 3, 2400, 'config', 'ep:setting', 'collect/config/index', 'CollectConfig', 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集配置按钮权限
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2421, '采集配置查询', 'collect:config:query', 3, 1, 2420, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2422, '采集配置更新', 'collect:config:update', 3, 3, 2420, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集日志菜单
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2430, '采集日志', 'collect:log:query', 2, 4, 2400, 'log', 'ep:document', 'collect/log/index', 'CollectLog', 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 插入采集日志按钮权限
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2431, '采集日志查询', 'collect:log:query', 3, 1, 2430, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2432, '采集日志删除', 'collect:log:delete', 3, 4, 2430, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+INSERT INTO `system_menu` (`id`, `name`, `permission`, `type`, `sort`, `parent_id`, `path`, `icon`, `component`, `component_name`, `status`, `visible`, `keep_alive`, `always_show`, `creator`, `create_time`, `updater`, `update_time`, `deleted`) 
+VALUES (2433, '采集日志导出', 'collect:log:export', 3, 5, 2430, '', '', '', NULL, 0, b'1', b'1', b'1', 'admin', NOW(), '1', NOW(), b'0');
+
+-- 为超级管理员角色分配菜单权限
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2400, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2401, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2402, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2403, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2404, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2405, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2406, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2407, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2410, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2411, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2412, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2413, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2420, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2421, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2422, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2430, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2431, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2432, 'admin', NOW(), '1', NOW(), b'0', 1);
+INSERT INTO `system_role_menu` (`role_id`, `menu_id`, `creator`, `create_time`, `updater`, `update_time`, `deleted`, `tenant_id`) 
+VALUES (1, 2433, 'admin', NOW(), '1', NOW(), b'0', 1);
+
 SET FOREIGN_KEY_CHECKS = 1;
