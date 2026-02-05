@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 数据采集任务 Service 接口
  *
- * @author 芋道源码
+ * @author ToBy.Qoder
  */
 public interface CollectTaskService {
 

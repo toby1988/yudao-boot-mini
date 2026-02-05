@@ -9,7 +9,7 @@ import lombok.*;
 /**
  * 数据采集配置 DO
  *
- * @author 芋道源码
+ * @author ToBy.Qoder
  */
 @TableName("collect_config")
 @KeySequence("collect_config_seq")

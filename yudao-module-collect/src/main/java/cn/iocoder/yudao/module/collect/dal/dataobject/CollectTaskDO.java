@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * 数据采集任务 DO
  *
- * @author 芋道源码
+ * @author ToBy.Qoder
  */
 @TableName("collect_task")
 @KeySequence("collect_task_seq") // 用于 Oracle、PostgreSQL、Kingbase、DB2、H2 数据库的主键自增。如果是 MySQL 等数据库，可不写。

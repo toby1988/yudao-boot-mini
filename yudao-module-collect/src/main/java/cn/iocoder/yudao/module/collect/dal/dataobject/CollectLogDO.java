@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * 数据采集日志 DO
  *
- * @author 芋道源码
+ * @author ToBy.Qoder
  */
 @TableName("collect_log")
 @KeySequence("collect_log_seq")

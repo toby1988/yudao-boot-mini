@@ -6,7 +6,7 @@ import cn.hutool.crypto.digest.DigestUtil;
 /**
  * 数据采集工具类
  *
- * @author 芋道源码
+ * @author ToBy.Qoder
  */
 public class CollectUtils {
 

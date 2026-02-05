@@ -30,7 +30,7 @@ import static cn.iocoder.yudao.module.collect.enums.ErrorCodeConstants.*;
 /**
  * 数据采集任务 Service 实现类
  *
- * @author 芋道源码
+ * @author ToBy.Qoder
  */
 @Service
 @Validated
