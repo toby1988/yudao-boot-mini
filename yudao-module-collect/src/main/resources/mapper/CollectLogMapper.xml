@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.iocoder.yudao.module.collect.dal.mysql.collect.CollectLogMapper">
+
+    <!--
+        一般情况下，MyBatis-Plus 提供了 BaseMapperX 基础的 CRUD 操作，
+        所以不需要额外编写 SQL 语句。
+        当需要复杂查询时，可以在该文件中添加自定义 SQL。
+    -->
+
+</mapper>
